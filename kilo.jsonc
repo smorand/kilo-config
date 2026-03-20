@@ -1,0 +1,9 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "permission": {
+    "external_directory": {
+      "/Users/sebastien/Documents/Projects/misc/mayou8/*": "allow",
+      "/Users/sebastien/.claude/*": "allow"
+    }
+  }
+}
