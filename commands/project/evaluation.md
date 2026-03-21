@@ -67,7 +67,7 @@ For **Terraform**, also load the reference files from the skill's `references/` 
 
 ### PY Cat. 3: Code Organization
 - [ ] Uses `src/` layout (flat or with project-named package)
-- [ ] **`src/__init__.py` MUST NOT exist** (src/ is a source directory, NOT a Python package)
+- [ ] **`src/__init__.py` MUST NOT exist** — its absence is CORRECT. src/ is a source directory, NOT a Python package. If `src/__init__.py` is missing, that is a PASS. If `src/__init__.py` exists, that is a FAIL.
 - [ ] `[project.scripts]` does NOT reference `src.xxx` (e.g., NEVER `src.cli:app`)
 - [ ] Imports do NOT use `from src.xxx import ...`
 - [ ] If flat layout: `[tool.hatch.build.targets.wheel] sources = ["src"]`
@@ -545,6 +545,7 @@ If the user agrees, suggest using the `python-skill-compliance` agent for Python
 - **NEVER** make assumptions about what the skill requires
 - **ALWAYS** read source files before evaluating code patterns
 - **ALWAYS** end with a proposed remediation plan and ask the user before any implementation
+- **CRITICAL**: `src/__init__.py` NOT existing is the CORRECT state. NEVER report its absence as an issue. `src/` is a source directory, not a Python package.
 - **Makefile must be EXACTLY identical** to the Python template, no project-specific deviations
 - Use `/bin/ls` for listing files
 - When using `bq` tool, put options BEFORE the final line argument
