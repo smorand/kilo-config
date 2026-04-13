@@ -212,11 +212,21 @@ Write tests for all new functionality:
 - If existing tests fail due to intentional changes (e.g., feature removal), update them accordingly
 - If existing tests fail unexpectedly, fix the implementation — do NOT just fix the tests
 
-### 4.3 Full test run
+### 4.3 Acceptance test loop (mandatory, 100% pass required)
 
-Run the complete test suite using `QUALITY_COMMANDS.test` (or `QUALITY_COMMANDS.check` if it runs everything). All tests must pass before proceeding.
+A user story is NOT considered implemented until every acceptance test passes. Execute this loop:
 
-If tests fail, apply the error recovery process from 3.4.
+1. Run the complete test suite using `QUALITY_COMMANDS.test` (or `QUALITY_COMMANDS.check` if it runs everything). **Always use the project's CI/CD chain (Makefile)**. Never run test files directly or use ad hoc commands.
+2. Parse the output: count passed, failed, and errored tests.
+3. **If any test fails or errors:**
+   a. Analyze the failure(s)
+   b. Fix the code (not the test expectations, unless the test itself is wrong)
+   c. Run quality gates (format → lint → build)
+   d. Go back to step 1
+4. **Repeat until 0 failures and 0 errors.** Do NOT proceed to Phase 5, do NOT declare the story done, and do NOT ask the user to accept partial results while any acceptance test is failing.
+5. Apply the 3 attempt limit from section 3.4 **per individual test**, not globally. If the same single test fails 3 times after different fix attempts, escalate that test to the user while continuing to fix others.
+
+Only after 100% of tests pass, commit the final state and proceed.
 
 ---
 

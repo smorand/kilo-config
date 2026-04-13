@@ -66,7 +66,17 @@ gh pr view <number> --json mergeable --jq '.mergeable'
 
 ---
 
-## Step 4: Merge
+## Step 4: Checkout target branch
+
+Before merging, switch to the target branch and pull latest:
+```bash
+git checkout <baseRefName>
+git pull origin <baseRefName>
+```
+
+---
+
+## Step 5: Merge
 
 ### Squash merge
 ```bash
@@ -80,7 +90,7 @@ gh pr merge <number> --merge
 
 ---
 
-## Step 5: Cleanup
+## Step 6: Cleanup
 
 After a successful merge, **always** perform all cleanup steps (unless `--delete-branch=false` is passed):
 
@@ -90,9 +100,8 @@ After a successful merge, **always** perform all cleanup steps (unless `--delete
    ```
    - If the remote branch was already deleted (e.g., by GitHub auto-delete), ignore the error and continue.
 
-2. **Switch back to the base branch:**
+2. **Pull the merge commit:**
    ```bash
-   git checkout <baseRefName>
    git pull origin <baseRefName>
    ```
 
