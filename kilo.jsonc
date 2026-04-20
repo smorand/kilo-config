@@ -5,5 +5,33 @@
       "/Users/sebastien/Documents/Projects/misc/mayou8/*": "allow",
       "/Users/sebastien/.claude/*": "allow"
     }
+  },
+  "provider": {
+    "mlx": {
+      "name": "MLX Local",
+      "api": "openai",
+      "options": {
+        "baseURL": "http://localhost:8080/v1",
+        "apiKey": "mlx-local"
+      },
+      "models": {
+        "gemma-4-26b-it": {
+          "id": "mlx-community/gemma-4-26b-a4b-it-4bit",
+          "name": "Gemma 4 26B IT (4-bit)",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": false,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
   }
 }
