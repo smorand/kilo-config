@@ -11,23 +11,23 @@
       "name": "MLX Local",
       "api": "openai",
       "options": {
-        "baseURL": "http://localhost:8080/v1",
+        "baseURL": "http://localhost:9121/v1",
         "apiKey": "mlx-local"
       },
       "models": {
-        "gemma-4-26b-it": {
-          "id": "mlx-community/gemma-4-26b-a4b-it-4bit",
-          "name": "Gemma 4 26B IT (4-bit)",
-          "attachment": true,
+        "qwen3.6-27b-4bit": {
+          "id": "mlx-community/Qwen3.6-27B-4bit",
+          "name": "Qwen 3.6 27B (4-bit)",
+          "attachment": false,
           "reasoning": true,
           "temperature": true,
-          "tool_call": false,
+          "tool_call": true,
           "limit": {
-            "context": 131072,
+            "context": 256000,
             "output": 8192
           },
           "modalities": {
-            "input": ["text", "image"],
+            "input": ["text"],
             "output": ["text"]
           }
         }
